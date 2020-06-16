@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/HundredPushups/static/css/main.595e8ee5.chunk.css",
+    "main.css": "/HundredPushups/static/css/main.d67a0b12.chunk.css",
     "main.js": "/HundredPushups/static/js/main.d4816dce.chunk.js",
     "main.js.map": "/HundredPushups/static/js/main.d4816dce.chunk.js.map",
     "runtime-main.js": "/HundredPushups/static/js/runtime-main.f215f866.js",
@@ -8,15 +8,15 @@
     "static/js/2.96094abe.chunk.js": "/HundredPushups/static/js/2.96094abe.chunk.js",
     "static/js/2.96094abe.chunk.js.map": "/HundredPushups/static/js/2.96094abe.chunk.js.map",
     "index.html": "/HundredPushups/index.html",
-    "precache-manifest.fcf33daf41196e2613b9d0874121de33.js": "/HundredPushups/precache-manifest.fcf33daf41196e2613b9d0874121de33.js",
+    "precache-manifest.0eb354d786b69f0e54f4bf5db63c782c.js": "/HundredPushups/precache-manifest.0eb354d786b69f0e54f4bf5db63c782c.js",
     "service-worker.js": "/HundredPushups/service-worker.js",
-    "static/css/main.595e8ee5.chunk.css.map": "/HundredPushups/static/css/main.595e8ee5.chunk.css.map",
+    "static/css/main.d67a0b12.chunk.css.map": "/HundredPushups/static/css/main.d67a0b12.chunk.css.map",
     "static/js/2.96094abe.chunk.js.LICENSE.txt": "/HundredPushups/static/js/2.96094abe.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f215f866.js",
     "static/js/2.96094abe.chunk.js",
-    "static/css/main.595e8ee5.chunk.css",
+    "static/css/main.d67a0b12.chunk.css",
     "static/js/main.d4816dce.chunk.js"
   ]
 }
