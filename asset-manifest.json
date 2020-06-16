@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/HundredPushups/static/css/main.d6cb4c3a.chunk.css",
-    "main.js": "/HundredPushups/static/js/main.4f713d99.chunk.js",
-    "main.js.map": "/HundredPushups/static/js/main.4f713d99.chunk.js.map",
+    "main.css": "/HundredPushups/static/css/main.595e8ee5.chunk.css",
+    "main.js": "/HundredPushups/static/js/main.d4816dce.chunk.js",
+    "main.js.map": "/HundredPushups/static/js/main.d4816dce.chunk.js.map",
     "runtime-main.js": "/HundredPushups/static/js/runtime-main.f215f866.js",
     "runtime-main.js.map": "/HundredPushups/static/js/runtime-main.f215f866.js.map",
     "static/js/2.96094abe.chunk.js": "/HundredPushups/static/js/2.96094abe.chunk.js",
     "static/js/2.96094abe.chunk.js.map": "/HundredPushups/static/js/2.96094abe.chunk.js.map",
     "index.html": "/HundredPushups/index.html",
-    "precache-manifest.5d1a94211712deab2041d4eb72c194df.js": "/HundredPushups/precache-manifest.5d1a94211712deab2041d4eb72c194df.js",
+    "precache-manifest.e234e71abfb910c6f314f6fd77250a3b.js": "/HundredPushups/precache-manifest.e234e71abfb910c6f314f6fd77250a3b.js",
     "service-worker.js": "/HundredPushups/service-worker.js",
-    "static/css/main.d6cb4c3a.chunk.css.map": "/HundredPushups/static/css/main.d6cb4c3a.chunk.css.map",
+    "static/css/main.595e8ee5.chunk.css.map": "/HundredPushups/static/css/main.595e8ee5.chunk.css.map",
     "static/js/2.96094abe.chunk.js.LICENSE.txt": "/HundredPushups/static/js/2.96094abe.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f215f866.js",
     "static/js/2.96094abe.chunk.js",
-    "static/css/main.d6cb4c3a.chunk.css",
-    "static/js/main.4f713d99.chunk.js"
+    "static/css/main.595e8ee5.chunk.css",
+    "static/js/main.d4816dce.chunk.js"
   ]
 }
