@@ -7,61 +7,51 @@ import Toggle from "./Toggle";
 import "./App.css";
 import data from "./data";
 
-const dayToBars = (day, scaleY, theme) => {
+const dayToBars = (day, scaleY, theme, options) => {
+  const count = Object.values(options).reduce((prev, curr) => prev + curr, 0);
+  const size = 6 / count;
+  if (count === 0) {
+    return <></>;
+  }
+  const data = [];
+  if (options.easy) {
+    data.push(day.easy);
+  }
+  if (options.medium) {
+    data.push(day.medium);
+  }
+  if (options.hard) {
+    data.push(day.hard);
+  }
+  console.log(data);
   return (
     <>
-      {day.easy
-        .reduce((prev, curr) => [...prev, prev[prev.length - 1] + curr], [0])
-        .reverse()
-        .map((v, i) => (
-          <rect
-            width="2"
-            y={scaleY(v)}
-            x="0"
-            height={90 - scaleY(v)}
-            fill={theme[i]}
-            strokeWidth="0.5"
-            stroke={theme.text}
-          />
-        ))}
-      {day.medium
-        .reduce((prev, curr) => [...prev, prev[prev.length - 1] + curr], [0])
-        .reverse()
-        .map((v, i) => (
-          <rect
-            width="2"
-            y={scaleY(v)}
-            x="2"
-            height={90 - scaleY(v)}
-            fill={theme[i]}
-            strokeWidth="0.5"
-            stroke={theme.text}
-          />
-        ))}
-      {day.hard
-        .reduce((prev, curr) => [...prev, prev[prev.length - 1] + curr], [0])
-        .reverse()
-        .map((v, i) => (
-          <rect
-            width="2"
-            y={scaleY(v)}
-            x="4"
-            height={90 - scaleY(v)}
-            fill={theme[i]}
-            strokeWidth="0.5"
-            stroke={theme.text}
-          />
-        ))}
+      {data.map((d, i1) => {
+        return d
+          .reduce((prev, curr) => [...prev, prev[prev.length - 1] + curr], [0])
+          .reverse()
+          .map((v, i2) => (
+            <rect
+              width={size}
+              y={scaleY(v)}
+              x={size * i1}
+              height={90 - scaleY(v)}
+              fill={theme[i2]}
+              strokeWidth="0.5"
+              stroke={theme.text}
+            />
+          ));
+      })}
     </>
   );
 };
 
-const weekToDays = (week, scaleY, theme) => {
+const weekToDays = (week, scaleY, theme, options) => {
   return (
     <>
       {week.days.map((day, i) => (
         <g style={{ transform: `translateX(${i * 8}px)` }} className="week">
-          {dayToBars(day, scaleY, theme)}
+          {dayToBars(day, scaleY, theme, options)}
           <text
             style={{ fontSize: 2 }}
             x="3"
@@ -104,7 +94,7 @@ const optionsReducer = (state, action) => {
 };
 
 function App() {
-  const [state, dispatch] = useReducer(optionsReducer, {
+  const [options, dispatch] = useReducer(optionsReducer, {
     easy: true,
     medium: true,
     hard: true,
@@ -155,7 +145,7 @@ function App() {
         <g style={{ transform: "translateX(14px)" }}>
           {data.map((week) => (
             <g style={{ transform: `translateX(${(week.index - 1) * 30}px)` }}>
-              {weekToDays(week, scaleY, theme)}
+              {weekToDays(week, scaleY, theme, options)}
             </g>
           ))}
         </g>
@@ -173,19 +163,19 @@ function App() {
           <span style={{ justifySelf: "end" }}>Easy</span>
           <Toggle
             theme={theme}
-            on={state.easy}
+            on={options.easy}
             onClick={() => dispatch({ type: "easy" })}
           />
           <span style={{ justifySelf: "end" }}>Medium</span>
           <Toggle
             theme={theme}
-            on={state.medium}
+            on={options.medium}
             onClick={() => dispatch({ type: "medium" })}
           />
           <span style={{ justifySelf: "end" }}>Hard</span>
           <Toggle
             theme={theme}
-            on={state.hard}
+            on={options.hard}
             onClick={() => dispatch({ type: "hard" })}
           />
         </div>
