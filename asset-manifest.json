@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/HundredPushups/static/css/main.d6cb4c3a.chunk.css",
+    "main.js": "/HundredPushups/static/js/main.32116a5b.chunk.js",
+    "main.js.map": "/HundredPushups/static/js/main.32116a5b.chunk.js.map",
+    "runtime-main.js": "/HundredPushups/static/js/runtime-main.f215f866.js",
+    "runtime-main.js.map": "/HundredPushups/static/js/runtime-main.f215f866.js.map",
+    "static/js/2.57457625.chunk.js": "/HundredPushups/static/js/2.57457625.chunk.js",
+    "static/js/2.57457625.chunk.js.map": "/HundredPushups/static/js/2.57457625.chunk.js.map",
+    "index.html": "/HundredPushups/index.html",
+    "precache-manifest.1073e103f1c4bccab5a1119b50922d84.js": "/HundredPushups/precache-manifest.1073e103f1c4bccab5a1119b50922d84.js",
+    "service-worker.js": "/HundredPushups/service-worker.js",
+    "static/css/main.d6cb4c3a.chunk.css.map": "/HundredPushups/static/css/main.d6cb4c3a.chunk.css.map",
+    "static/js/2.57457625.chunk.js.LICENSE.txt": "/HundredPushups/static/js/2.57457625.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f215f866.js",
+    "static/js/2.57457625.chunk.js",
+    "static/css/main.d6cb4c3a.chunk.css",
+    "static/js/main.32116a5b.chunk.js"
+  ]
+}
