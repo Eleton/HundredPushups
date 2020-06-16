@@ -10,6 +10,7 @@ const Toggle = ({ theme, on, onClick }) => (
       width: 20,
       height: 20,
       borderRadius: "100%",
+      cursor: "pointer",
     }}
     onClick={onClick}
   >

@@ -11,6 +11,7 @@ const ModeButton = ({ theme, onClick }) => (
       fontSize: "1.5rem",
       padding: "0.25rem 1rem",
       margin: "1rem 0",
+      cursor: "pointer",
     }}
     onClick={onClick}
   >

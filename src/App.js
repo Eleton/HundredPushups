@@ -23,7 +23,6 @@ const dayToBars = (day, scaleY, theme, options) => {
   if (options.hard) {
     data.push(day.hard);
   }
-  console.log(data);
   return (
     <>
       {data.map((d, i1) => {
@@ -32,6 +31,7 @@ const dayToBars = (day, scaleY, theme, options) => {
           .reverse()
           .map((v, i2) => (
             <rect
+              key={v}
               width={size}
               y={scaleY(v)}
               x={size * i1}
@@ -50,7 +50,11 @@ const weekToDays = (week, scaleY, theme, options) => {
   return (
     <>
       {week.days.map((day, i) => (
-        <g style={{ transform: `translateX(${i * 8}px)` }} className="week">
+        <g
+          key={JSON.stringify(day)}
+          style={{ transform: `translateX(${i * 8}px)` }}
+          className="week"
+        >
           {dayToBars(day, scaleY, theme, options)}
           <text
             style={{ fontSize: 2 }}
@@ -115,6 +119,16 @@ function App() {
         transition: "background-color 0.5s, color 0.25s",
       }}
     >
+      <h2>
+        Visualization of the{" "}
+        <a
+          style={{ color: theme[8], transition: "color: 0.5s" }}
+          href="https://hundredpushups.com/"
+        >
+          One Hundred Pushups
+        </a>
+        -program
+      </h2>
       <svg
         width={canvasWidth}
         height={canvasHeight}
@@ -122,7 +136,7 @@ function App() {
         className="graph"
       >
         {[0, 50, 100, 150, 200, 250].map((n) => (
-          <g transform={`translate(0 ${scaleY(n)})`}>
+          <g key={n} transform={`translate(0 ${scaleY(n)})`}>
             <text
               style={{ fontSize: 4, textAnchor: "end" }}
               x="9"
@@ -144,7 +158,10 @@ function App() {
         ))}
         <g style={{ transform: "translateX(14px)" }}>
           {data.map((week) => (
-            <g style={{ transform: `translateX(${(week.index - 1) * 30}px)` }}>
+            <g
+              key={week.index}
+              style={{ transform: `translateX(${(week.index - 1) * 30}px)` }}
+            >
               {weekToDays(week, scaleY, theme, options)}
             </g>
           ))}
