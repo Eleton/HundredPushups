@@ -1,8 +1,11 @@
-import React from "react";
-import data from "./data";
+import React, { useReducer } from "react";
 import { scaleLinear } from "d3-scale";
+import useResizeObserver from "use-resize-observer";
 import useSolarized from "./useSolarized";
+import ModeButton from "./ModeButton";
+import Toggle from "./Toggle";
 import "./App.css";
+import data from "./data";
 
 const dayToBars = (day, scaleY, theme) => {
   return (
@@ -64,26 +67,57 @@ const weekToDays = (week, scaleY, theme) => {
             x="3"
             y={scaleY(-10)}
             textAnchor="middle"
+            fill={theme.text}
           >
             Day {i + 1}
           </text>
         </g>
       ))}
-      <text style={{ fontSize: 4 }} x="11" y={scaleY(-24)} textAnchor="middle">
+      <text
+        style={{ fontSize: 4 }}
+        x="11"
+        y={scaleY(-24)}
+        textAnchor="middle"
+        fill={theme.text}
+      >
         Week {week.index}
       </text>
     </>
   );
 };
 
+const optionsReducer = (state, action) => {
+  console.log({ state, action });
+  switch (action.type) {
+    case "easy": {
+      return { ...state, easy: !state.easy };
+    }
+    case "medium": {
+      return { ...state, medium: !state.medium };
+    }
+    case "hard": {
+      return { ...state, hard: !state.hard };
+    }
+    default:
+      return state;
+  }
+};
+
 function App() {
+  const [state, dispatch] = useReducer(optionsReducer, {
+    easy: true,
+    medium: true,
+    hard: true,
+  });
   const [theme, lightMode, setLightMode] = useSolarized();
   const scaleY = scaleLinear().domain([0, 260]).range([90, 10]);
-  console.log(data);
-  console.log(scaleY(data[0].days[0].easy[0]));
-  console.log(data[0].days[0].easy);
+  const { ref, width } = useResizeObserver();
+  const canvasWidth = width < 840 ? width - 40 : 800;
+  const canvasHeight = ~~(canvasWidth / 2);
+
   return (
     <div
+      ref={ref}
       className="App"
       style={{
         color: theme.text,
@@ -91,8 +125,12 @@ function App() {
         transition: "background-color 0.5s, color 0.25s",
       }}
     >
-      <button onClick={() => setLightMode(!lightMode)}>Switch theme</button>
-      <svg width="800" height="400" viewBox="0 0 200 100" className="graph">
+      <svg
+        width={canvasWidth}
+        height={canvasHeight}
+        viewBox="0 0 200 100"
+        className="graph"
+      >
         {[0, 50, 100, 150, 200, 250].map((n) => (
           <g transform={`translate(0 ${scaleY(n)})`}>
             <text
@@ -122,6 +160,37 @@ function App() {
           ))}
         </g>
       </svg>
+      <div>
+        <br />
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            columnGap: 6,
+            rowGap: 2,
+          }}
+        >
+          <span style={{ justifySelf: "end" }}>Easy</span>
+          <Toggle
+            theme={theme}
+            on={state.easy}
+            onClick={() => dispatch({ type: "easy" })}
+          />
+          <span style={{ justifySelf: "end" }}>Medium</span>
+          <Toggle
+            theme={theme}
+            on={state.medium}
+            onClick={() => dispatch({ type: "medium" })}
+          />
+          <span style={{ justifySelf: "end" }}>Hard</span>
+          <Toggle
+            theme={theme}
+            on={state.hard}
+            onClick={() => dispatch({ type: "hard" })}
+          />
+        </div>
+      </div>
+      <ModeButton theme={theme} onClick={() => setLightMode(!lightMode)} />
     </div>
   );
 }

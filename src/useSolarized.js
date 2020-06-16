@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const c = {
   light: ["#fdf6e3", "#eee8d5", "#93a1a1", "#839496"],
